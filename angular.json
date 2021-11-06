@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "projects": {
+    "url-storefront": {
+      "projectType": "application",
+      "root": "apps/url-storefront",
+      "sourceRoot": "apps/url-storefront/src",
+      "prefix": "url",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/url-storefront",
+            "index": "apps/url-storefront/src/index.html",
+            "main": "apps/url-storefront/src/main.ts",
+            "polyfills": "apps/url-storefront/src/polyfills.ts",
+            "tsConfig": "apps/url-storefront/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/url-storefront/src/favicon.ico",
+              "apps/url-storefront/src/assets"
+            ],
+            "styles": ["apps/url-storefront/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/url-storefront/src/environments/environment.ts",
+                  "with": "apps/url-storefront/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "url-storefront:build:production"
+            },
+            "development": {
+              "browserTarget": "url-storefront:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "url-storefront:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/url-storefront/src/**/*.ts",
+              "apps/url-storefront/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/url-storefront"],
+          "options": {
+            "jestConfig": "apps/url-storefront/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "url-storefront-e2e": {
+      "root": "apps/url-storefront-e2e",
+      "sourceRoot": "apps/url-storefront-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/url-storefront-e2e/cypress.json",
+            "devServerTarget": "url-storefront:serve:development",
+            "tsConfig": "apps/url-storefront-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "url-storefront:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/url-storefront-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["url-storefront"]
+    }
+  }
+}
