@@ -1,0 +1,12 @@
+<div class="select animated zoomIn" style="position: absolute; height: auto;">
+  <input type="radio" name="option" [checked]="isOpened">
+  <i class="toggle icon icon-arrow-down"></i>
+  <i class="toggle icon icon-arrow-up"></i>
+  <span class="placeholder">{{placeholder}}</span>
+  <label class="option" *ngFor="let option of options" [ngClass]="{ selected: selectedValue === option.value}">
+      <input type="radio" name="option" [value]="option.value" [checked]="option.value === selectedValue"  (click)="selected.emit(option)">
+      <span class="title animated fadeIn">
+        <i *ngIf="option.icon" class="icon {{option.icon}}"></i>{{option.label}}
+      </span>
+  </label>
+</div>

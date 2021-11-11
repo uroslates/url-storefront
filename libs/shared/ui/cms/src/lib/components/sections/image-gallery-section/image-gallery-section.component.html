@@ -1,0 +1,22 @@
+<div class="gallery">
+<!-- TODO: prikaz za slucak od 2 slike - koristi drugu klasu - daj imena klasama deskriptivno -->
+  <!-- <ng-container *ngIf="expression; else elseTemplate">
+    section.subSections.length == 2 handluj
+  </ng-container>
+  <ng-template #elseTemplate>
+    
+  </ng-template> -->
+  
+  <figure *ngFor="let subSection of section.subSections; let i=index"
+    class="gallery__item gallery__item--{{i+1}}">
+    <a [routerLink]="subSection.link">
+      <img [src]="'https://demo.spreecommerce.org'+subSection.img.lg"
+        [alt]="subSection.title"
+        class="gallery__img">
+    </a>
+    <figcaption>
+      <span>{{subSection.title}}</span>
+    </figcaption>
+  </figure>
+</div>
+<br>

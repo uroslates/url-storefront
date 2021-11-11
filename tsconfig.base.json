@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@url/pages/cart": ["libs/pages/cart/src/index.ts"],
+      "@url/pages/category": ["libs/pages/category/src/index.ts"],
+      "@url/pages/home": ["libs/pages/home/src/index.ts"],
+      "@url/pages/product": ["libs/pages/product/src/index.ts"],
+      "@url/sdk/spree": ["libs/sdk/spree/src/index.ts"],
+      "@url/sdk/storefront": ["libs/sdk/storefront/src/index.ts"],
+      "@url/shared/types": ["libs/shared/types/src/index.ts"],
+      "@url/shared/ui/cms": ["libs/shared/ui/cms/src/index.ts"],
+      "@url/shared/ui/storefront": ["libs/shared/ui/storefront/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

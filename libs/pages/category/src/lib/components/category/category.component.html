@@ -1,0 +1,27 @@
+<url-breadcrumb [breadcrumbs]="(breadcrumbs | async) || []">
+</url-breadcrumb>
+
+<div class="grid second-nav">
+  <div class="column-xs-12">
+    <nav>
+      <ol class="horizontal-list">
+        <li class="horizontal-item" style="min-height: 54px;">
+          <url-selectbox [placeholder]="'Sort By...'"
+            [options]="(sortByOptions | async) || []"
+            [selectedValue]="selectedSort"
+            (selected)="onSortByChange($event)">
+          </url-selectbox>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<section class="category-products">
+  <url-products-list
+    [products]="(categoryProducts | async) || []"
+    [loading]="loading">
+  </url-products-list>
+</section>
+
+<!-- TODO: categoryDetails.taxons[] loop to show subcategories -->

@@ -1,0 +1,20 @@
+<ng-container *ngIf="breadcrumbs && breadcrumbs.length">
+  <div class="grid second-nav">
+    <div class="column-xs-12">
+      <nav>
+        <ol class="horizontal-list breadcrum-list">
+          <ng-container *ngIf="breadcrumbs">
+            <ng-container *ngFor="let breadcrumb of breadcrumbs; let i=index">
+                <li class="horizontal-item  breadcrum-item">
+                  <a [routerLink]="[breadcrumb.routerLink]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    {{breadcrumb.label}}  
+                  </a>
+                </li>
+            </ng-container>
+          </ng-container>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</ng-container>
+  

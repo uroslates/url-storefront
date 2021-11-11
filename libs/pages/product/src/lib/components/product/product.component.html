@@ -1,0 +1,100 @@
+<ng-container *ngIf="productDetails | async as product; else loadingProductDetailsTemplate">
+  <url-breadcrumb [breadcrumbs]="product | productBreadcrumbs">
+  </url-breadcrumb>
+
+  <ng-container *ngIf="!productDetailsLoading; else loadingProductDetailsTemplate">
+    <div class="grid product">
+      <section class="product-images-section column-xs-12 column-md-7">
+          <div class="product-gallery">
+            <div class="product-image">
+              <ng-container *ngIf="product | defaultProductImage as defaultImageUrl; else noDefaultImageTemplate">
+                <img class="active" [src]="'http://demo.spreecommerce.org'+defaultImageUrl">
+              </ng-container>
+              <ng-template #noDefaultImageTemplate>
+                <img class="active" src="https://source.unsplash.com/W1yjvf5idqA">
+              </ng-template>
+            </div>
+            <ul class="image-list">
+              <ng-container *ngFor="let productImage of product.images || []">
+                <li class="image-item">
+                  <img  [src]="'http://demo.spreecommerce.org'+productImage.originalUrl" [alt]="productImage.alt">
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+      </section>
+
+      <section class="product-details-section column-xs-12 column-md-5">
+          <h1>{{product.name}}</h1>
+          <h2>{{product.displayPrice}}</h2>
+          <div class="description">
+            <div [innerHtml]="product.description"></div>
+          </div>
+          <button class="add-to-cart">Add To Cart</button>
+
+          <section class="product-details-section section-spacing">
+            <h4>Details</h4>
+              <ul>
+                <li *ngFor="let productProperty of product?.productProperties">
+                  <b>{{productProperty.name}}</b>&nbsp;
+                  <span>{{productProperty.value}}</span>
+                </li>
+              </ul>
+          </section>
+
+          <section>
+            <h4>Variants</h4>
+              <ng-container *ngIf="product.variants; else noProductVariantsTemplate">
+                <ng-container *ngFor="let variant of product.variants">
+                  <div class="product-variants">
+                    <!-- <ng-container *ngFor="let optionValue of (variant.optionValues || [])">
+                      <ng-container [ngSwitch]="optionValue.optionType.name">
+                        <ng-container *ngSwitchCase="'color'">
+                          <span class="color-option" [style]="{'background-color':optionValue.presentation}"></span>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'size'">
+                          <span class="size-option">{{optionValue.presentation}}</span>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>
+                          {{optionValue.presentation}}
+                        </ng-container>
+                      </ng-container>
+                    </ng-container> -->
+                    <small>{{variant.options_text}}</small>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-template #noProductVariantsTemplate>
+                <p>No product variants available.</p>
+              </ng-template>
+          </section>
+      </section>
+    </div>    
+  </ng-container>
+
+</ng-container>
+
+<ng-template #loadingProductDetailsTemplate>
+  <div class="grid product">
+    <section class="product-images-section column-xs-12 column-md-7">
+      <url-product-gallery-loader-placeholder></url-product-gallery-loader-placeholder>
+    </section>
+
+    <div class="product-details-section column-xs-12 column-md-5">
+      <url-product-details-loader-placeholder></url-product-details-loader-placeholder>
+    </div>
+  </div>
+</ng-template>
+
+<section class="grid related-products">
+  <div class="column-xs-12">
+    <h3>You may also like</h3>
+
+    <url-products-list
+      [products]="(relatedProducts | async) || []"
+      [loading]="relatedProductsLoading"
+      [placeholdersArray]="[1,2,3]"
+      [noResultsMessage]="'No Related Products found!'">
+    </url-products-list>
+  </div>
+</section>

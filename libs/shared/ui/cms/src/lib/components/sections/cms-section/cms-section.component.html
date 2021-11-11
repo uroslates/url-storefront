@@ -1,0 +1,25 @@
+<ng-container *ngIf="cmsSection">
+  <ng-container [ngSwitch]="cmsSection?.type">
+    <section class="url-cms-section" [class]="cmsSection?.type">
+      <ng-container *ngSwitchCase="pageCmsSectionTypeEnum.HeroImage">
+        <url-hero-image-section [cmsSection]="cmsSection"></url-hero-image-section>
+      </ng-container>
+      <ng-container *ngSwitchCase="pageCmsSectionTypeEnum.ImageGallery">
+        <url-image-gallery-section [cmsSection]="cmsSection"></url-image-gallery-section>
+      </ng-container>
+      <ng-container *ngSwitchCase="pageCmsSectionTypeEnum.SideBySideImages">
+        <p><b>SideBySideImages add styles for them to be layed next to each other</b></p>
+        <url-image-gallery-section [cmsSection]="cmsSection" class="side-by-side">
+        </url-image-gallery-section>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <url-list-preview-card
+          [src]="'https://picsum.photos/1440/400'"
+          [title]="(section.content || {}).title || ['', section.type, ' Section type not implemented'].join('')"
+          [routerLink]="section.link"
+          [routerLinkTitle]="(section.content || {}).button_text">
+        </url-list-preview-card>
+      </ng-container>
+    </section>
+  </ng-container>
+</ng-container>

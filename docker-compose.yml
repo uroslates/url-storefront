@@ -1,0 +1,19 @@
+version: '3'
+services:
+  headless-store:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8000:4200
+      - 8003:3333
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - monorepo_net
+
+networks:
+  monorepo_net:
+    driver: bridge

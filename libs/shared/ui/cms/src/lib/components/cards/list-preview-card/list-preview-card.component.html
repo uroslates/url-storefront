@@ -1,0 +1,16 @@
+<ng-container *ngIf="routerLink; else noRouterLinkTemplate">
+  <a [routerLink]="routerLink" class="list-preview-card-container">
+    <ng-container *ngTemplateOutlet="cardTemplate"></ng-container>
+  </a>
+</ng-container>
+<ng-template #noRouterLinkTemplate>
+  <ng-container *ngTemplateOutlet="cardTemplate"></ng-container>
+</ng-template>
+
+<ng-template #cardTemplate>
+  <article [class]="class" class="list-preview-card">
+    <img [src]="src" [alt]="title">
+    <h4>{{title}}</h4>
+    <p class="price">{{subTitle}}</p>
+  </article>
+</ng-template>

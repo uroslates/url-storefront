@@ -1,0 +1,21 @@
+<div class="grid products-list">
+  <ng-container *ngIf="!loading && products.length; else noProductsTemplate">
+    <url-product-list-card 
+      *ngFor="let product of products"
+      [product]="product"
+      class="column-xs-12 column-md-4">
+    </url-product-list-card>
+  </ng-container>
+  <ng-template #noProductsTemplate>
+    <ng-container *ngIf="!loading">
+      <p class="column-xs-12 column-md-12 column-lg-12">
+        {{noResultsMessage}}
+      </p>
+    </ng-container>
+  </ng-template>
+  <ng-container *ngIf="loading">
+    <ng-container *ngFor="let item of placeholdersArray">
+      <url-list-preview-card-loader-placehloder class="column-xs-12 column-md-4"></url-list-preview-card-loader-placehloder>
+    </ng-container>
+  </ng-container>
+</div>
