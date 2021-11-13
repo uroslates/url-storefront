@@ -17,4 +17,4 @@ ARG node_env=development
 ENV NODE_ENV $node_env
 
 # Run the app
-CMD ["npm", "run", "serve:url-storefront:all"]
+CMD ["npm", "run", "serve-url-storefront-all"]

@@ -271,10 +271,7 @@
             "dist/libs/sdk/spree"
           ],
           "options": {
-            "project": "libs/sdk/spree/ng-package.json",
-            "scripts": [
-              "./node_modules/@spree/storefront-api-v2-sdk/dist/client/index.js"
-            ]
+            "project": "libs/sdk/spree/ng-package.json"
           },
           "configurations": {
             "production": {
