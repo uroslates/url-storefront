@@ -6,7 +6,7 @@
     "ng": "./node_modules/.bin/ng",
     "serve:url-storefront": "ng serve url-storefront",
     "serve:url-storefront-api": "ng serve api",
-    "serve:url-storefront:all": "ng serve-with-api url-storefront",
+    "serve-url-storefront-all": "ng serve-with-api url-storefront",
     "serve:docker-compose:all": "docker-compose up --build  headless-store",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
@@ -20,6 +20,9 @@
     "docker:rmi-api": "docker rmi nxproduction_api0 && docker rmi nxproduction_api1",
     "docker:clear": "npm run docker:rm-web && npm run docker:rmi-web && docker:rm-api && docker:rmi-api",
     "docker:serve-prod": "npm run build -- --prod && ./docker/docker-compose up"
+  },
+  "engines": {
+    "node": ">=14.15.4"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +39,7 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "@ngrx/component-store": "^12.5.1",
     "@nrwl/angular": "13.1.3",
     "@spree/storefront-api-v2-sdk": "4.11.0",
     "cache-manager": "^3.4.4",
@@ -55,6 +59,9 @@
     "@angular/cli": "~12.2.0",
     "@angular/compiler-cli": "^12.2.0",
     "@angular/language-service": "^12.2.0",
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "husky": "^7.0.4",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/cli": "13.1.3",
