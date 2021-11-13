@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AbstractStorefrontSdkService } from './abstract-storefront-sdk.service';
-import { Product, Category, Page } from '@url/shared/types';
+import { Product, Category, Page, LineItem, Cart } from '@url/shared/types';
 
 export interface IQueryOptions {
   sort?: string;
@@ -46,4 +46,7 @@ export class StorefrontSdkService implements AbstractStorefrontSdkService {
     throw Error('Not implemented');
   }
 
+  addItemToCart(item: LineItem, options?: any): Observable<Cart> {
+    throw Error('Not implemented');
+  }
 }

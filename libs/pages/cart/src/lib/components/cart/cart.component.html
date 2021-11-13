@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<ng-container *ngIf="vm$ | async as vm; else loadingCartTemplate">
+
+  <section class="grid related-products">
+    <div class="column-xs-12">
+      <h3>Your Cart</h3>
+      
+      <url-products-list
+        [products]="vm.products || []"
+        [loading]="vm.loading"
+        [placeholdersArray]="[1,2,3]"
+        [noResultsMessage]="'Your Cart has no Products!'">
+      </url-products-list>
+    </div>
+  </section>
+
+</ng-container>
+
+<ng-template #loadingCartTemplate>
+  <div class="grid product">
+    <div class="product-details-section column-xs-12 column-md-12">
+      Loading Cart items
+    </div>
+  </div>
+</ng-template>

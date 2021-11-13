@@ -30,7 +30,7 @@
           <div class="description">
             <div [innerHtml]="product.description"></div>
           </div>
-          <button class="add-to-cart">Add To Cart</button>
+          <button (click)="addToCart(product)" class="add-to-cart">Add To Cart</button>
 
           <section class="product-details-section section-spacing">
             <h4>Details</h4>

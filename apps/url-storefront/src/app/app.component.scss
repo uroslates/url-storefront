@@ -1,64 +1,6 @@
 @import '../styles.scss';
-
-// .header {
-//   @extend .flex;
-//   @extend .container;
-//   padding-top: 18px;
-//   padding-bottom: 18px;
-
-//   .site-logo {
-//     flex: 1;
-//     .site-logo-image {
-//       max-width: 80px;
-//     }
-//   }
-
-//   .site-mid-section {
-//     flex: 2
-//   }
-
-//   .site-actions {
-//     @extend .flex;
-//     flex: 1;
-//     justify-content: flex-end;
-//     .site-actions-account {
-//       @extend .styled-link;
-//       margin: 0 30px;
-//     }
-//     .site-actions-cart {
-//       display: block;
-//       position: relative;
-//       width: 40px;
-//       height: 40px;
-//       background-color: transparent;
-//       svg {
-//         display: block;
-//         width: auto;
-//         margin: 0 auto;
-//         color: #231f20;
-//         transform: translate3d(0,0,0);
-//         fill: white;
-//         transition: fill .4s ease;
-//       }
-//       .site-actions-cart-label {
-//         position: absolute;
-//         top: 17px;
-//         left: 56%;
-//         width: auto;
-//         font-size: 11px;
-//         line-height: 12px;
-//         text-align: center;
-//         color: #161616;
-//         transform: translateX(-50%);
-//         transition: color 0.4s ease;
-//       }
-//     }
-//   }
-// }
-
-// .subheader {
-//   background-color: #f6f6f6;
-//   ul {
-//     height: 40px;
-//   }
-// }
+.nav-item {
+  a {
+    padding: 5px;
+  }
+}

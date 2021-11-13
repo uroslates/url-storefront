@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IQueryOptions, StorefrontSdkService } from './storefront-sdk.service';
-import { Product, Category, Page } from '@url/shared/types';
+import { Product, Category, Page, LineItem, Cart } from '@url/shared/types';
 
 /**
  * Storefront SdkService responsible for providing data to the application.
@@ -46,4 +46,7 @@ export class SdkService {
     return this.storefrontSdkService.product(id);
   }
 
+  addItemToCart(item: LineItem, options?: any): Observable<Cart> {
+    return this.storefrontSdkService.addItemToCart(item, options);
+  }
 }

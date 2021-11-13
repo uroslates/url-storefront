@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StorefrontSdkService, SortValues } from '@url/sdk/storefront';
 import { combineLatest, Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, share, switchMap, tap } from 'rxjs/operators';
 import { routerPaths } from '../../pages-product.module';
 import { Product } from '@url/shared/types';
+import { CartStoreService } from "@url/pages/cart";
 
 const shuffle = (array: any[] = []) => array.sort(() => Math.random() - 0.5);
 
@@ -21,7 +22,8 @@ export class ProductComponent {
 
   constructor(
     private sdkService: StorefrontSdkService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cardStore: CartStoreService,
   ) {
     const slug: Observable<string> = this.route.params.pipe(
       map(params => params[routerPaths.productSlug])
@@ -30,6 +32,8 @@ export class ProductComponent {
       tap(_ => this.productDetailsLoading = true),
       tap(_ => this.relatedProductsLoading = true),
       switchMap(slug => this.sdkService.product(slug)),
+      // share stream (hot) subscriptions (avoid prod details api calls dupllication)
+      share(),
       tap(_ => this.productDetailsLoading = false),
     );
     
@@ -44,5 +48,9 @@ export class ProductComponent {
       } as any)),
       tap(() => this.relatedProductsLoading = false)
     );
+  }
+
+  addToCart(product: Product) {
+    this.cardStore.addProductToCart(product, 1);
   }
 }

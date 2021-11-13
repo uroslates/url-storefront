@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Product, Category, Page } from '@url/shared/types';
+import { Product, Category, Page, LineItem, Cart } from '@url/shared/types';
 import { IQueryOptions } from './storefront-sdk.service';
 
 export abstract class AbstractStorefrontSdkService {
@@ -16,4 +16,5 @@ export abstract class AbstractStorefrontSdkService {
 
   abstract product(productSlug: string): Observable<Product>;
 
+  abstract addItemToCart(item: LineItem, options?: any): Observable<Cart>;
 }

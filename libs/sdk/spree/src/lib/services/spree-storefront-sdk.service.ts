@@ -3,10 +3,10 @@ import { Observable, from } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
 import { AbstractStorefrontSdkService, IQueryOptions } from '@url/sdk/storefront';
-import { Product, Category, Page } from '@url/shared/types';
+import { Product, Category, Page, LineItem, Cart } from '@url/shared/types';
 import { Client } from '@spree/storefront-api-v2-sdk';
 // @ts-ignore
-import { makeClient } from '@spree/storefront-api-v2-sdk/dist/client';
+import { makeClient } from '../dist/client';
 import * as JSONAPISerializer from 'json-api-serializer';
 import { Constants } from '../constants';
 import { SpreePage } from '../types/page';
@@ -15,6 +15,8 @@ import { ProductMapper } from '../mappers/product';
 import { SpreeProduct } from '../types/product';
 import { CategoryMapper } from '../mappers/category';
 import { SpreeCategory } from '../types/category';
+import { SpreeCart } from '../types/cart';
+import { CartMapper } from '../mappers/cart';
 
 export interface ISpreeConfig {
   host: string;
@@ -155,6 +157,26 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
         return deserializedProductResult;
       }),
       map(ProductMapper.mapSpreeProductToProduct)
+    );
+  }
+
+  addItemToCart(item: LineItem, options?: any): Observable<Cart> {
+    console.log(`Reaching out to Spree SDK for adding item to Cart...`, item, options);
+    const token = (options || {}).token;
+    const payload = {
+      variant_id: item.variant.id,
+      quantity: item.quantity,
+      options: {
+          
+      }
+    };
+    return this.requestDeserializer(this.client.cart.addItem(token, payload)).pipe(
+      map(jsonApiResponse => {
+        const deserializedCartResult: SpreeCart = this.jsonApiSerializer.deserialize('product', jsonApiResponse);
+        console.log('[Spree::Data:Response:Deserialzied]', deserializedCartResult)
+        return deserializedCartResult;
+      }),
+      map(CartMapper.mapSpreeCartToCart)
     );
   }
 
