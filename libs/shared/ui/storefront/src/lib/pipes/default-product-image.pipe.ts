@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product, Image } from '@url/shared/types';
+import { Product } from '@url/shared/types';
 
 @Pipe({
   name: 'defaultProductImage'
 })
 export class DefaultProductImagePipe implements PipeTransform {
-  transform(product: Product, property?: string): string {
+  transform(product: Product, _property?: string): string {
     const defaultImage = '';
     const images = (product || {}).images || [];
     if (images.length) {

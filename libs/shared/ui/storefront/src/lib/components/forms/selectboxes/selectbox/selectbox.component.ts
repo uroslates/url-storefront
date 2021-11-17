@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ElementRef, HostListener, ChangeDetectorRef, ViewChild, ContentChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 
 export interface UrlSelectOption<T> {
   value: T;
@@ -20,8 +20,7 @@ export class SelectboxComponent {
   @Input() isOpened = false;
 
   constructor(
-    private eRef: ElementRef,
-    private cdRef: ChangeDetectorRef
+    private eRef: ElementRef
   ){}
 
   @HostListener('document:click', ['$event'])

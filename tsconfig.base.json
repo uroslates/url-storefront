@@ -22,6 +22,7 @@
       "@url/sdk/spree": ["libs/sdk/spree/src/index.ts"],
       "@url/sdk/storefront": ["libs/sdk/storefront/src/index.ts"],
       "@url/shared/types": ["libs/shared/types/src/index.ts"],
+      "@url/shared/ui/assets": ["libs/shared/ui/assets/src/index.ts"],
       "@url/shared/ui/cms": ["libs/shared/ui/cms/src/index.ts"],
       "@url/shared/ui/storefront": ["libs/shared/ui/storefront/src/index.ts"]
     }

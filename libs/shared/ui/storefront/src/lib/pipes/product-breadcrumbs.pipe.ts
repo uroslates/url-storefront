@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product, Image } from '@url/shared/types';
+import { Product } from '@url/shared/types';
 import { Breadcrumb } from '../components';
 
 @Pipe({
   name: 'productBreadcrumbs'
 })
 export class ProductBreadcrumbsPipe implements PipeTransform {
-  transform(product: Product, property?: string): Breadcrumb[] {
+  transform(product: Product, _property?: string): Breadcrumb[] {
     product = product || {};
     return [
       {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SdkStorefrontModule, StorefrontSdkService } from '@url/sdk/storefront';
-import { SdkSpreeModule, SpreeStorefrontSdkService } from '@url/sdk/spree';
+import { SdkSpreeModule, SpreeStorefrontSdkService, MockedSpreeStorefrontSdkService } from '@url/sdk/spree';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -46,7 +46,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   providers: [
     {
       provide: StorefrontSdkService,
-      useClass: SpreeStorefrontSdkService
+      // Uncomment below for for Github Pages hosting purposes use Mocked Responses
+      // useClass: MockedSpreeStorefrontSdkService
+      // Uncomment below for proxying to real Spree BackEnd instance
+      useClass: environment.spree.isUseApiMock ? MockedSpreeStorefrontSdkService : SpreeStorefrontSdkService
     },
   ],
   bootstrap: [AppComponent],
