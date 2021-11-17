@@ -8,16 +8,16 @@
           <div class="product-gallery">
             <div class="product-image">
               <ng-container *ngIf="product | defaultProductImage as defaultImageUrl; else noDefaultImageTemplate">
-                <img class="active" [src]="'http://demo.spreecommerce.org'+defaultImageUrl">
+                <img class="active" [src]="defaultImageUrl">
               </ng-container>
               <ng-template #noDefaultImageTemplate>
-                <img class="active" src="https://source.unsplash.com/W1yjvf5idqA">
+                <img class="active" [src]="noImagePlaceholder">
               </ng-template>
             </div>
             <ul class="image-list">
               <ng-container *ngFor="let productImage of product.images || []">
                 <li class="image-item">
-                  <img  [src]="'http://demo.spreecommerce.org'+productImage.originalUrl" [alt]="productImage.alt">
+                  <img  [src]="productImage.originalUrl" [alt]="productImage.alt">
                 </li>
               </ng-container>
             </ul>
@@ -46,14 +46,14 @@
             <h4>Variants</h4>
               <ng-container *ngIf="product.variants; else noProductVariantsTemplate">
                 <ng-container *ngFor="let variant of product.variants">
-                  <div class="product-variants">
+                  <div class="product-variants flex">
                     <!-- <ng-container *ngFor="let optionValue of (variant.optionValues || [])">
                       <ng-container [ngSwitch]="optionValue.optionType.name">
                         <ng-container *ngSwitchCase="'color'">
                           <span class="color-option" [style]="{'background-color':optionValue.presentation}"></span>
                         </ng-container>
                         <ng-container *ngSwitchCase="'size'">
-                          <span class="size-option">{{optionValue.presentation}}</span>
+                          <span class="size-option styled-link">{{optionValue.presentation}}</span>
                         </ng-container>
                         <ng-container *ngSwitchDefault>
                           {{optionValue.presentation}}

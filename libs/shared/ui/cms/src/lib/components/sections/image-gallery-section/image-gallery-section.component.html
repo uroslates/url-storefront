@@ -10,7 +10,7 @@
   <figure *ngFor="let subSection of section.subSections; let i=index"
     class="gallery__item gallery__item--{{i+1}}">
     <a [routerLink]="subSection.link">
-      <img [src]="'https://demo.spreecommerce.org'+subSection.img.lg"
+      <img [src]="subSection.img.lg"
         [alt]="subSection.title"
         class="gallery__img">
     </a>

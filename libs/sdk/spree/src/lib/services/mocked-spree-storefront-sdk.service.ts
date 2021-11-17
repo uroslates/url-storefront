@@ -1,11 +1,12 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { Observable, from } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
+import { Observable, from, of } from 'rxjs';
+import { tap, map, catchError, delay } from 'rxjs/operators';
 
 import { AbstractStorefrontSdkService, IQueryOptions } from '@url/sdk/storefront';
 import { Product, Category, Page, LineItem, Cart } from '@url/shared/types';
 import { Client } from '@spree/storefront-api-v2-sdk';
 // @ts-ignore
+// import { makeClient } from '../dist/client';
 import { makeClient } from '@spree/storefront-api-v2-sdk/dist/client';
 import * as JSONAPISerializer from 'json-api-serializer';
 import { Constants } from '../constants';
@@ -17,12 +18,15 @@ import { CategoryMapper } from '../mappers/category';
 import { SpreeCategory } from '../types/category';
 import { SpreeCart } from '../types/cart';
 import { CartMapper } from '../mappers/cart';
+import { responses } from '../mock/responses';
 import { ISpreeConfig, SpreeConfig } from '../types';
+
+const shuffle = (array: any[] = []) => array.sort(() => Math.random() - 0.5);
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
+export class MockedSpreeStorefrontSdkService implements AbstractStorefrontSdkService {
   private client: Client;
   private jsonApiSerializer: any;
 
@@ -48,24 +52,13 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
 
   categories(query?: IQueryOptions): Observable<Category[]> {
     console.log('Reaching out to Spree SDK for categories...');
-    return this.requestDeserializer(this.client.taxons.list({
-        include: 'children',
-        page: 1
-      }
-    ))
+    return of(shuffle(responses.categories.map(c => c.response))[0])
   }
 
   category(categorySlug: string, options: IQueryOptions = {}): Observable<Category> {
     console.log(`Reaching out to Spree SDK for category "${categorySlug}"...`, options);
     options = options || {};
-    const query = {
-      ...options,
-      filter: {
-        permalink: categorySlug
-      },
-      include: options.include || 'products.images,products.product_properties,products.option_types',
-    };
-    return this.requestDeserializer(this.client.taxons.show(categorySlug, query)).pipe(
+    return of(shuffle(responses.categories.map(c => c.response))[0]).pipe(
       map(jsonApiResponse => {
         const deserializedCategoryResult: SpreeCategory = this.jsonApiSerializer.deserialize('category', jsonApiResponse);
         console.log('[Spree::Data:Response:Deserialzied]', deserializedCategoryResult)
@@ -77,15 +70,7 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
 
   categoryProducts(categoryId: string, options: IQueryOptions = {}): Observable<Product[]> {
     console.log('Reaching out to Spree SDK for category products...');
-    const query = {
-      ...(options || {}),
-      filter: {
-        taxons: categoryId
-      },
-      include: 'default_variant,images,product_properties,option_types',
-      page: 1
-    };
-    return this.requestDeserializer(this.client.products.list({}, query)).pipe(
+    return of(responses.categoryProducts[0].response).pipe(
       map(jsonApiResponse => {
         const deserializedCategoryProductsResult: SpreeProduct[] = this.jsonApiSerializer.deserialize('product', jsonApiResponse);
         console.log('[Spree::Data:Response:Deserialzied]', deserializedCategoryProductsResult)
@@ -103,9 +88,7 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
    */
   page(pageId: string): Observable<Page> {
     console.log(`Reaching out to Spree SDK for page <${pageId}>...`);
-    return this.requestDeserializer(this.client.pages.show(pageId, {
-      include: 'cms_sections.linked_resource',
-    })).pipe(
+    return of(responses.homePage).pipe(
       map(jsonApiResponse => {
         const deserializedResult: SpreePage = this.jsonApiSerializer.deserialize('page', jsonApiResponse);
         console.log('[Spree::Data:Response:Deserialzied:Pages]', deserializedResult)
@@ -125,11 +108,7 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
       categoryIds = Constants.categories.topCategoriesIds;
     }
     console.log(`Reaching out to Spree SDK for category [${categoryIds.join(',')}]...`);
-    return this.requestDeserializer(this.client.taxons.list({
-        filter: {
-          ids: categoryIds.join(',')
-        }
-      })).pipe(
+    return of(responses.topCategories[0].response).pipe(
         map(jsonApiResponse => {
           const deserializedCategoriesResult: SpreeCategory[] = this.jsonApiSerializer.deserialize('category', jsonApiResponse);
           console.log('[Spree::Data:Response:Deserialzied]', deserializedCategoriesResult)
@@ -141,12 +120,8 @@ export class SpreeStorefrontSdkService implements AbstractStorefrontSdkService {
 
   product(productSlug: string): Observable<Product> {
     console.log(`Reaching out to Spree SDK for product "${productSlug}"...`);
-    return this.requestDeserializer(this.client.products.show(productSlug, undefined, {
-      filter: {
-        permalink: productSlug
-      },
-      include: 'images,taxons,variants,product_properties,option_types,option_types.option_values',
-    })).pipe(
+    return of(shuffle(responses.products.map(p => p.response))[0]).pipe(
+      delay(1000),
       map(jsonApiResponse => {
         const deserializedProductResult: SpreeProduct = this.jsonApiSerializer.deserialize('product', jsonApiResponse);
         console.log('[Spree::Data:Response:Deserialzied]', deserializedProductResult)

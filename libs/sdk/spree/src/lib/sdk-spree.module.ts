@@ -1,8 +1,10 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ISpreeConfig, SpreeConfig, SpreeStorefrontSdkService } from './services/spree-storefront-sdk.service';
+import { SpreeStorefrontSdkService } from './services/spree-storefront-sdk.service';
 import { SharedTypesModule } from '@url/shared/types';
 import { SdkStorefrontModule } from '@url/sdk/storefront';
+import { ISpreeConfig, SpreeConfig } from './types';
+import { MockedSpreeStorefrontSdkService } from './services';
 
 @NgModule({
   imports: [
@@ -21,6 +23,9 @@ export class SdkSpreeModule {
         {
           provide: SpreeConfig,
           useValue: config
+        }, {
+          provide: SpreeStorefrontSdkService,
+          useClass: config.isUseApiMock ? MockedSpreeStorefrontSdkService : SpreeStorefrontSdkService
         }
       ]
     }

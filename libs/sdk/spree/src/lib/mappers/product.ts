@@ -1,16 +1,16 @@
 import { Product, Image, ImageStyle, OptionType, OptionValue } from '@url/shared/types';
-import { SpreeImageStyle, SpreeOptionType, SpreeOptionValue, SpreeProduct, SpreeProductImage } from '../types/product';
+import { SpreeImageStyle, SpreeOptionType, SpreeOptionValue, SpreeProduct, SpreeProductImage, ISpreeConfig } from '../types';
 
 export class ProductMapper {
-  static mapSpreeProductToProduct(product: SpreeProduct): Product {
-    const images =  [...ProductMapper.mapSpreeProductImagesToProductsImages(product.images)];
+  static mapSpreeProductToProduct(product: SpreeProduct, config: ISpreeConfig): Product {
+    const images =  [...ProductMapper.mapSpreeProductImagesToProductsImages(product.images, config)];
     const displayPrice = product.display_price;
     const inStock = product.in_stock;
     const productProperties = product.product_properties ? [...product.product_properties] : undefined;
-    const defaultVariant = product.default_variant ? ProductMapper.mapSpreeProductToProduct({...product.default_variant}) : undefined;
+    const defaultVariant = product.default_variant ? ProductMapper.mapSpreeProductToProduct({...product.default_variant}, config) : undefined;
     const optionTypes = product.option_types ? ProductMapper.mapSpreeProductOptionTypesToOptionTypes([...product.option_types]) : undefined;
     const optionValues = product.option_values ? ProductMapper.mapSpreeProductOptionValuesToOptionValues([...product.option_values]) : undefined;
-    const variants = product.variants ? ProductMapper.mapSpreeProductsToProducts([...product.variants]) : undefined;
+    const variants = product.variants ? ProductMapper.mapSpreeProductsToProducts([...product.variants], config) : undefined;
 
     delete (product as any).displayPrice;
     delete (product as any).in_stock;
@@ -32,14 +32,14 @@ export class ProductMapper {
     }) as Product;
   }
   
-  static mapSpreeProductsToProducts(products: SpreeProduct[] = []): Product[] {
-    return (products || []).map(ProductMapper.mapSpreeProductToProduct);
+  static mapSpreeProductsToProducts(products: SpreeProduct[] = [], config: ISpreeConfig): Product[] {
+    return (products || []).map(product => ProductMapper.mapSpreeProductToProduct(product, config));
   }
 
-  static mapSpreeProductImageToProductImage(image: SpreeProductImage): Image {
+  static mapSpreeProductImageToProductImage(image: SpreeProductImage, config: ISpreeConfig): Image {
     const styles =  [...ProductMapper.mapSpreeProductImageStylesToImageStyles(image.styles)];
-    // TODO: shop base prefix goes here(from env config)
-    const originalUrl = image.original_url;
+    const imagePrefix = config.imagePrefix
+    const originalUrl = `${imagePrefix}${image.original_url}`;
     // TODO: shop base prefix goes here(from env config)
     const transformedUrl = image.transformed_url;
     delete (image as any).original_url;
@@ -52,8 +52,8 @@ export class ProductMapper {
     }) as Image;
   }
 
-  static mapSpreeProductImagesToProductsImages(images: SpreeProductImage[] = []): Image[] {
-    return images.map(ProductMapper.mapSpreeProductImageToProductImage);
+  static mapSpreeProductImagesToProductsImages(images: SpreeProductImage[] = [], config: ISpreeConfig): Image[] {
+    return images.map(image => ProductMapper.mapSpreeProductImageToProductImage(image, config));
   }
 
   static mapSpreeProductImageStyleToImageStyle(style: SpreeImageStyle): ImageStyle {

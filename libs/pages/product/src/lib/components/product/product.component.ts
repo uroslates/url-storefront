@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StorefrontSdkService, SortValues } from '@url/sdk/storefront';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
-import { routerPaths } from '../../pages-product.module';
+import { noImagePlaceholder, routerPaths } from '../../pages-product.module';
 import { Product } from '@url/shared/types';
 import { CartStoreService } from "@url/pages/cart";
 
@@ -19,6 +19,7 @@ export class ProductComponent {
   productDetailsLoading = false;
   relatedProducts: Observable<Product[]> = of([]);
   relatedProductsLoading = false;
+  noImagePlaceholder = noImagePlaceholder;
 
   constructor(
     private sdkService: StorefrontSdkService,

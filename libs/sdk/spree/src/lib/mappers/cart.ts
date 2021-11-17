@@ -1,5 +1,5 @@
 import { Cart } from '@url/shared/types';
-import { SpreeCart } from '../types/cart';
+import { SpreeCart } from '../types';
 
 export class CartMapper {
   static mapSpreeCartToCart(cart: SpreeCart): Cart {

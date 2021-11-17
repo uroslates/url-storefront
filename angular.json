@@ -8,16 +8,12 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -41,20 +37,14 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/api"
-          ],
+          "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -71,9 +61,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/pages/cart"
-          ],
+          "outputs": ["dist/libs/pages/cart"],
           "options": {
             "project": "libs/pages/cart/ng-package.json"
           },
@@ -89,9 +77,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/pages/cart"
-          ],
+          "outputs": ["coverage/libs/pages/cart"],
           "options": {
             "jestConfig": "libs/pages/cart/jest.config.js",
             "passWithNoTests": true
@@ -107,10 +93,7 @@
           }
         }
       },
-      "tags": [
-        "pages",
-        "pages:cart"
-      ]
+      "tags": ["pages", "pages:cart"]
     },
     "pages-category": {
       "projectType": "library",
@@ -120,9 +103,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/pages/category"
-          ],
+          "outputs": ["dist/libs/pages/category"],
           "options": {
             "project": "libs/pages/category/ng-package.json"
           },
@@ -138,9 +119,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/pages/category"
-          ],
+          "outputs": ["coverage/libs/pages/category"],
           "options": {
             "jestConfig": "libs/pages/category/jest.config.js",
             "passWithNoTests": true
@@ -156,10 +135,7 @@
           }
         }
       },
-      "tags": [
-        "pages",
-        "pages:category"
-      ]
+      "tags": ["pages", "pages:category"]
     },
     "pages-home": {
       "projectType": "library",
@@ -169,9 +145,12 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/pages/home"
-          ],
+          "outputs": ["dist/libs/pages/home"],
+          "assets": [{
+            "input": "libs/shared/ui/assets/src/lib",
+            "glob": "**/*",
+            "output": "shared/assets"
+          }],
           "options": {
             "project": "libs/pages/home/ng-package.json"
           },
@@ -187,9 +166,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/pages/home"
-          ],
+          "outputs": ["coverage/libs/pages/home"],
           "options": {
             "jestConfig": "libs/pages/home/jest.config.js",
             "passWithNoTests": true
@@ -205,10 +182,8 @@
           }
         }
       },
-      "tags": [
-        "pages",
-        "pages:home"
-      ]
+      "tags": ["pages", "pages:home"],
+      "implicitDependencies": ["shared-ui-assets"]
     },
     "pages-product": {
       "projectType": "library",
@@ -218,9 +193,12 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/pages/product"
-          ],
+          "outputs": ["dist/libs/pages/product"],
+          "assets": [{
+            "input": "libs/shared/ui/assets/src/lib",
+            "glob": "**/*",
+            "output": "shared/assets"
+          }],
           "options": {
             "project": "libs/pages/product/ng-package.json"
           },
@@ -236,9 +214,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/pages/product"
-          ],
+          "outputs": ["coverage/libs/pages/product"],
           "options": {
             "jestConfig": "libs/pages/product/jest.config.js",
             "passWithNoTests": true
@@ -254,10 +230,8 @@
           }
         }
       },
-      "tags": [
-        "pages",
-        "pages:product"
-      ]
+      "tags": ["pages", "pages:product"],
+      "implicitDependencies": ["shared-ui-assets"]
     },
     "sdk-spree": {
       "projectType": "library",
@@ -267,9 +241,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/sdk/spree"
-          ],
+          "outputs": ["dist/libs/sdk/spree"],
           "options": {
             "project": "libs/sdk/spree/ng-package.json"
           },
@@ -285,9 +257,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sdk/spree"
-          ],
+          "outputs": ["coverage/libs/sdk/spree"],
           "options": {
             "jestConfig": "libs/sdk/spree/jest.config.js",
             "passWithNoTests": true
@@ -303,10 +273,7 @@
           }
         }
       },
-      "tags": [
-        "sdk",
-        "sdk:spree"
-      ]
+      "tags": ["sdk", "sdk:spree"]
     },
     "sdk-storefront": {
       "projectType": "library",
@@ -316,9 +283,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/sdk/storefront"
-          ],
+          "outputs": ["dist/libs/sdk/storefront"],
           "options": {
             "project": "libs/sdk/storefront/ng-package.json"
           },
@@ -334,9 +299,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sdk/storefront"
-          ],
+          "outputs": ["coverage/libs/sdk/storefront"],
           "options": {
             "jestConfig": "libs/sdk/storefront/jest.config.js",
             "passWithNoTests": true
@@ -352,10 +315,7 @@
           }
         }
       },
-      "tags": [
-        "sdk",
-        "sdk:storefront"
-      ]
+      "tags": ["sdk", "sdk:storefront"]
     },
     "shared-types": {
       "projectType": "library",
@@ -365,9 +325,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/shared/types"
-          ],
+          "outputs": ["dist/libs/shared/types"],
           "options": {
             "project": "libs/shared/types/ng-package.json"
           },
@@ -383,9 +341,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/types"
-          ],
+          "outputs": ["coverage/libs/shared/types"],
           "options": {
             "jestConfig": "libs/shared/types/jest.config.js",
             "passWithNoTests": true
@@ -401,10 +357,40 @@
           }
         }
       },
-      "tags": [
-        "shared",
-        "shared:types"
-      ]
+      "tags": ["shared", "shared:types"]
+    },
+    "shared-ui-assets": {
+      "root": "libs/shared/ui/assets",
+      "sourceRoot": "libs/shared/ui/assets/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/ui/assets",
+            "main": "libs/shared/ui/assets/src/index.ts",
+            "tsConfig": "libs/shared/ui/assets/tsconfig.lib.json",
+            "assets": ["libs/shared/ui/assets/*.md"]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/ui/assets/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/assets"],
+          "options": {
+            "jestConfig": "libs/shared/ui/assets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     },
     "shared-ui-cms": {
       "projectType": "library",
@@ -414,9 +400,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/shared/ui/cms"
-          ],
+          "outputs": ["dist/libs/shared/ui/cms"],
           "options": {
             "project": "libs/shared/ui/cms/ng-package.json"
           },
@@ -432,9 +416,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/ui/cms"
-          ],
+          "outputs": ["coverage/libs/shared/ui/cms"],
           "options": {
             "jestConfig": "libs/shared/ui/cms/jest.config.js",
             "passWithNoTests": true
@@ -450,11 +432,7 @@
           }
         }
       },
-      "tags": [
-        "shared",
-        "shared:ui",
-        "shared:ui:cms"
-      ]
+      "tags": ["shared", "shared:ui", "shared:ui:cms"]
     },
     "shared-ui-storefront": {
       "projectType": "library",
@@ -464,9 +442,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/shared/ui/storefront"
-          ],
+          "outputs": ["dist/libs/shared/ui/storefront"],
           "options": {
             "project": "libs/shared/ui/storefront/ng-package.json"
           },
@@ -482,9 +458,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/ui/storefront"
-          ],
+          "outputs": ["coverage/libs/shared/ui/storefront"],
           "options": {
             "jestConfig": "libs/shared/ui/storefront/jest.config.js",
             "passWithNoTests": true
@@ -500,11 +474,7 @@
           }
         }
       },
-      "tags": [
-        "shared",
-        "shared:ui",
-        "shared:ui:storefront"
-      ]
+      "tags": ["shared", "shared:ui", "shared:ui:storefront"]
     },
     "url-storefront": {
       "projectType": "application",
@@ -514,9 +484,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/url-storefront",
             "index": "apps/url-storefront/src/index.html",
@@ -527,11 +495,14 @@
             "assets": [
               "apps/url-storefront/src/favicon.ico",
               "apps/url-storefront/src/assets",
-              "apps/url-storefront/src/manifest.webmanifest"
+              "apps/url-storefront/src/manifest.webmanifest",
+              {
+                "input": "libs/shared/ui/assets/src/lib",
+                "glob": "**/*",
+                "output": "shared/assets"
+              }
             ],
-            "styles": [
-              "apps/url-storefront/src/styles.scss"
-            ],
+            "styles": ["apps/url-storefront/src/styles.scss"],
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "apps/url-storefront/ngsw-config.json"
@@ -601,9 +572,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/url-storefront"
-          ],
+          "outputs": ["coverage/apps/url-storefront"],
           "options": {
             "jestConfig": "apps/url-storefront/jest.config.js",
             "passWithNoTests": true
@@ -613,18 +582,19 @@
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
-                {
-                  "command": "ng serve api"
-                },
-                {
-                  "command": "ng serve url-storefront"
-                }
+              {
+                "command": "ng serve api"
+              },
+              {
+                "command": "ng serve url-storefront"
+              }
             ],
             "parallel": true
           }
-       }
+        }
       },
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-assets"]
     },
     "url-storefront-e2e": {
       "root": "apps/url-storefront-e2e",
@@ -646,20 +616,14 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/url-storefront-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/url-storefront-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "url-storefront"
-      ]
+      "implicitDependencies": ["url-storefront"]
     }
   }
 }

@@ -6,10 +6,8 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": ["@types"],
-    "typeRoots": [
-      "@types"
-    ],
+    "types": [],
+    "typeRoots": [],
     "lib": ["dom", "es2018"]
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"],

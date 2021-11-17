@@ -13,6 +13,9 @@ export const routerPaths = {
   productSlug: 'slug'
 }
 
+// Comming from @rl/shared/ui/assets 
+export const noImagePlaceholder = '/shared/assets/images/product-placeholder-1.jpeg';
+
 export const COMPONENTS = [
   ProductComponent,
   ProductDetailsLoaderPlaceholderComponent,

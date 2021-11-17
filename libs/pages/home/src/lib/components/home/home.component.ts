@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { Page, PageCmsSectionTypeEnum } from '@url/shared/types';
+import { noImagePlaceholder } from '../../pages-home.module';
 
 @Component({
   selector: 'url-home',
@@ -14,6 +15,7 @@ export class HomeComponent {
   page: Observable<Page>;
   loading = false;
   pageCmsSectionTypeEnum = PageCmsSectionTypeEnum;
+  noImagePlaceholder = noImagePlaceholder;
 
   constructor(private sdkService: StorefrontSdkService) {
     this.loading = true;

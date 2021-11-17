@@ -14,7 +14,7 @@
       </ng-container>
       <ng-container *ngSwitchDefault>
         <url-list-preview-card
-          [src]="'https://picsum.photos/1440/400'"
+          [src]="noImagePlaceholder"
           [title]="(section.content || {}).title || ['', section.type, ' Section type not implemented'].join('')"
           [routerLink]="section.link"
           [routerLinkTitle]="(section.content || {}).button_text">

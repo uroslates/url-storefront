@@ -9,6 +9,7 @@ import { PageCmsSectionTypeEnum, PageCmsSection, BasePageCmsSection } from '@url
 })
 export class CmsSectionComponent  {
   @Input() cmsSection?: PageCmsSection;
+  @Input() noImagePlaceholder?: string;
   pageCmsSectionTypeEnum: typeof PageCmsSectionTypeEnum =  PageCmsSectionTypeEnum;
 
   get section(): BasePageCmsSection {

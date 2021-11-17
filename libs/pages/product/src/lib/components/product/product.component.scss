@@ -1,7 +1,4 @@
-@import '../../../../../../../apps//url-storefront/src//styles.scss';
-
 .product-variants {
-  @extend .flex;
   justify-content: flex-start;
   > * {
     margin-right: 10px;
@@ -13,10 +10,9 @@
   height: 20px;
   display: block;
   border-radius: 50%;
-  box-shadow: $boxShadow;
+  box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, .5);
 }
 .size-option {
-  @extend .styled-link;
   border: 1px solid;
   padding: 5px;
   min-width: 20px;

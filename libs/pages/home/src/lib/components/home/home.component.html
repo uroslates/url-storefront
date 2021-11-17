@@ -2,7 +2,10 @@
 
   <ng-container *ngIf="page | async as homePage; else homePageLoadingTemplate">
     <ng-container *ngFor="let cmsSection of homePage.cmsSections">
-      <url-cms-section [cmsSection]="cmsSection"></url-cms-section>
+      <url-cms-section
+        [cmsSection]="cmsSection"
+        [noImagePlaceholder]="noImagePlaceholder">
+      </url-cms-section>
     </ng-container>
   </ng-container>
   

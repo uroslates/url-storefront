@@ -21,6 +21,7 @@ export enum PageCmsSectionTypeEnum {
 export interface BasePageCmsSection extends Record {  
   content: any;
   name: string;
+  title: string;
   settings: any;
   link: string;
   fit: string;
