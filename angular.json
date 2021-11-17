@@ -583,10 +583,10 @@
           "options": {
             "commands": [
               {
-                "command": "ng serve api"
+                "command": "ng serve api --host 0.0.0.0"
               },
               {
-                "command": "ng serve url-storefront"
+                "command": "ng serve url-storefront --host 0.0.0.0"
               }
             ],
             "parallel": true

@@ -15,6 +15,9 @@ COPY . .
 # Set the Node environment
 ARG node_env=development
 ENV NODE_ENV $node_env
+RUN ./node_modules/.bin/nx version
 
+EXPOSE 4200
+EXPOSE 3333
 # Run the app
 CMD ["npm", "run", "serve-url-storefront-all"]

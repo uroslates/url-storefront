@@ -4,10 +4,20 @@
 
 ## Running the application
 
+***Prerequisite:*** Install application dependencies by running ```yarn``` (or ```npm install```).
+
 To run the application locally execute the following commands:
 
 - ```npm run serve:url-storefront-api``` for starting the Back-End app
-- ```npm run serve:url-storefront-api``` for starting the Front-End app
+- ```npm run serve:url-storefront``` for starting the Front-End app
+
+Or you could run both of them by running:
+
+- ```npm run serve-url-storefront-all``` for starting both the Back-End as well as Front-End app within one terminal.
+
+Running the application with docker-compose is possible with:
+
+- ```npm run serve:docker-compose:dev``` for starting both the Back-End as well as Front-End app with development profile of docker-compose. After that open [http://localhost:8001](http://localhost:8001) for interacting with the Storefront.
 
 ## Documentation
 

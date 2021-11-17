@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/.bin/ng",
+    "nx": "./node_modules/.bin/nx",
     "serve:url-storefront": "ng serve url-storefront",
     "serve:url-storefront-api": "ng serve api",
-    "serve-url-storefront-all": "ng serve-with-api url-storefront",
-    "serve:docker-compose:all": "docker-compose up --build  headless-store",
+    "serve-url-storefront-all": "./node_modules/.bin/nx serve-with-api url-storefront",
+    "serve:docker-compose:dev": "docker-compose up --build headless-store",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "serve:prod:locally": "./node_modules/.bin/http-server ./dist/apps/url-storefront",
     "start": "nx serve",
@@ -15,12 +16,6 @@
     "build": "nx build",
     "test": "nx test",
     "dep-graph": "nx dep-graph",
-    "docker:rm-web": "docker stop web && docker rm web",
-    "docker:rm-api": "docker stop api && docker rm api",
-    "docker:rmi-web": "docker rmi nxproduction_web",
-    "docker:rmi-api": "docker rmi nxproduction_api0 && docker rmi nxproduction_api1",
-    "docker:clear": "npm run docker:rm-web && npm run docker:rmi-web && docker:rm-api && docker:rmi-api",
-    "docker:serve-prod": "npm run build -- --prod && ./docker/docker-compose up",
     "release": "npx standard-version"
   },
   "engines": {
