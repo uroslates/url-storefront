@@ -1,19 +1,7 @@
-<br/>
-<div style="text-align:center;">
-  <figure style="display:inline-block;margin:0;padding:0;">
-    <img src="./docs/images/url-storefront-home-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
-    <figcaption>Home Page</figcaption>
-  </figure>
-  <figure style="display:inline-block;">
-    <img src="./docs/images/url-storefront-category-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
-    <figcaption>Category Page</figcaption>
-  </figure>
-  <figure style="display:inline-block;">
-    <img src="./docs/images/url-storefront-product-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
-    <figcaption>Product Page</figcaption>
-  </figure>
-</div>
-<br/>
+| Home        | Category    | Product |
+| :---------: | :---------: | :---: |
+| ![Home Page](./docs/images/url-storefront-home-page.png "Home Page")  | ![Category Page](./docs/images/url-storefront-category-page.png "Category Page")  | ![Product Page](./docs/images/url-storefront-product-page.png "Product Page") |
+| Home Page   | Category Page | Product Page  |
 
 # Url Storefront
 
