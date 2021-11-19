@@ -1,14 +1,48 @@
 <br/>
 <div style="text-align:center;">
-  <img src="./docs/images/url-storefront-home-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
-  <img src="./docs/images/url-storefront-category-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
-  <img src="./docs/images/url-storefront-product-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
+  <figure style="display:inline-block;margin:0;padding:0;">
+    <img src="./docs/images/url-storefront-home-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
+    <figcaption>Home Page</figcaption>
+  </figure>
+  <figure style="display:inline-block;">
+    <img src="./docs/images/url-storefront-category-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
+    <figcaption>Category Page</figcaption>
+  </figure>
+  <figure style="display:inline-block;">
+    <img src="./docs/images/url-storefront-product-page.png" style="border: 1px solid #caca; padding: 5px; margin: 5px;max-width:200px;height: 140px;" />
+    <figcaption>Product Page</figcaption>
+  </figure>
 </div>
 <br/>
 
 # Url Storefront
 
-```Url Storefront``` is a lean, Angular-based JavaScript Headless E-Commerce Storefront application.
+<small>*Note*: Please bear in mind that this project is in an early development phase!</small>
+
+```Url Storefront``` is a lean, configurable and extendable ([Angular](https://angular.io/)-based) JavaScript Headless E-Commerce Storefront application.
+
+It is designed with **extendability** in mind. Therefor the support for a *3rd Party Data Providers* (such as [Spree](https://spreecommerce.org/), ...) is built in allowing pluggability to any Ecommerce platform (provided that its offering its Data through the Consumer based APIs).
+
+```url-storefront``` supports core storefront features such as:
+
+- Home page
+- Categories
+- Product details
+- Cart page
+- Adding to cart
+- ~~Search~~ (to be implemented)
+- ~~Checkout~~ (to be implemented)
+- ~~Order history~~ (to be implemented)
+
+## 3rd Party Adapters
+
+<small>In the near future, the support for **more 3rd Party Adapters** will be added into the project.</small>
+
+### Spree Adapter
+
+Currently ```url-storefront``` uses a built-in [Spree  Adapter](./libs/sdk/spree) library providing data from the 3rd Party Data Provider -> [Spree Commerce](https://spreecommerce.org/) using thier open-source [REST API](https://api.spreecommerce.org/)s by wrapping their [Spree Storefront JS/TS SDK](https://github.com/spree/spree-storefront-api-v2-js-sdk) internally.
+
+More info could be found in ```Spree SDK library```'s [Readme](./libs/sdk/spree/README.md).
 
 ## Running the application
 
@@ -73,9 +107,9 @@ There is an extensive list of ```things to be done``` in the project, some of wh
 
 For any specific questions or help please reach out to [creator](mailto:uroslates@gmail.com).
 
-## Reference
+## Contributors
 
-- Design based on [katherinekato](https://www.katherinekato.com/)'s [Product](https://codepen.io/kathykato/pen/gdvjax) CodePen solution.
+- Design (html/css) based on [katherinekato](https://www.katherinekato.com/)'s [Product CodePen](https://codepen.io/kathykato/pen/gdvjax) solution.
 
 ## License
 
