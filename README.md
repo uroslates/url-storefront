@@ -1,19 +1,27 @@
+<br/>
+<div style="text-align:center;">
+  <img src="./docs/images/url-storefront-home-page.png" style="max-width:200px;height: 140px;"/>
+  <img src="./docs/images/url-storefront-category-page.png" style="max-width:200px;height: 140px;"/>
+  <img src="./docs/images/url-storefront-product-page.png" style="max-width:200px;height: 140px;"/>
+</div>
+<br/>
+
 # Url Storefront
 
-```Url Storefront``` is an Angular based Headless E-Commerce web application.
+```Url Storefront``` is a lean, Angular-based JavaScript Headless E-Commerce Storefront application.
 
 ## Running the application
 
 ***Prerequisite:*** Install application dependencies by running ```yarn``` (or ```npm install```).
 
+To run both Front-End and Back-End with one command you could execute:
+
+- ```npm run serve-url-storefront-all``` for starting both the Back-End as well as Front-End app within one terminal.
+
 To run the application locally execute the following commands:
 
 - ```npm run serve:url-storefront-api``` for starting the Back-End app
 - ```npm run serve:url-storefront``` for starting the Front-End app
-
-Or you could run both of them by running:
-
-- ```npm run serve-url-storefront-all``` for starting both the Back-End as well as Front-End app within one terminal.
 
 Running the application with docker-compose is possible with:
 
@@ -21,7 +29,7 @@ Running the application with docker-compose is possible with:
 
 ## Documentation
 
-This project was generated using [Nx](https://nx.dev). Find out more about using the tool within the project [here](./docs/Nx.md).
+This project is using [Nx](https://nx.dev) tools (*find out more about using the tool within the project [here](./docs/Nx.md)*).
 
 ### Architecture
 
@@ -43,7 +51,7 @@ And couple of (npm publishable) libraries:
 - [@url/shared/ui/cms](./libs/shared/ui/cms/src/index.ts)
 - [@url/shared/ui/storefront](./libs/shared/ui/storefront/src/index.ts)
 
-Here is Application's dependency-graph:
+Following image shows the Application's dependency-graph:
 
 ![url-storefront Depenency Graph](./docs/images/url-storefront-dependency-graph.png "url-storefront Dependency Graph")
 
@@ -51,6 +59,24 @@ For seeing the entire **applications architecture** and **depnendecy graph** run
 
 ## Contribution
 
-This project is in **early development phase**. You are more than welcome to contribute. Please make sure to read the [Contribution](./docs/Contribution.md) if deciding to do so.
+This project is in **early development phase**. Any feedback, ideas, requests and contributions are welcome.
 
-There is an extensive list of ```things to be done``` in the project, some of which are categoriized and listed on [Todo](./docs/Todo.md) page.
+If deciding to contribute, please read the [Contribution](./docs/Contribution.md)'s page to learn how to help others, report an issue or do the code contribution.
+
+### To Do
+
+There is an extensive list of ```things to be done``` in the project, some of which are categorized and listed as a starting reference on [Todo](./docs/Todo.md) page.
+
+## Support
+
+```url-storefront``` is provied ```as is``` with no official lines of support.
+
+For any specific questions or help please reach out to [creator](mailto:uroslates@gmail.com).
+
+## Reference
+
+- Design based on [katherinekato](https://www.katherinekato.com/)'s [Product](https://codepen.io/kathykato/pen/gdvjax) CodePen solution.
+
+## License
+
+Copyright (c) 2021 Uros Lates.  This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE](./docs/LICENSE.md) file.

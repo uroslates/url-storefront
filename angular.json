@@ -594,7 +594,7 @@
         }
       },
       "tags": [],
-      "implicitDependencies": ["shared-ui-assets"]
+      "implicitDependencies": ["shared-ui-assets", "api"]
     },
     "url-storefront-e2e": {
       "root": "apps/url-storefront-e2e",
