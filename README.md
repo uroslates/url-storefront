@@ -1,8 +1,8 @@
 <br/>
 <div style="text-align:center;">
-  <img src="./docs/images/url-storefront-home-page.png" style="max-width:200px;height: 140px;"/>
-  <img src="./docs/images/url-storefront-category-page.png" style="max-width:200px;height: 140px;"/>
-  <img src="./docs/images/url-storefront-product-page.png" style="max-width:200px;height: 140px;"/>
+  <img src="./docs/images/url-storefront-home-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
+  <img src="./docs/images/url-storefront-category-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
+  <img src="./docs/images/url-storefront-product-page.png" style="max-width:200px;height: 140px;border: 1px solid #caca; padding: 5px; margin: 5px;"/>
 </div>
 <br/>
 
