@@ -40,12 +40,12 @@ To run both Front-End and Back-End with one command you could execute:
 
 - ```npm run serve-url-storefront-all``` for starting both the Back-End as well as Front-End app within one terminal.
 
-To run the application locally execute the following commands:
+Alternatively you could run the applications separately by executing the following commands:
 
 - ```npm run serve:url-storefront-api``` for starting the Back-End app
 - ```npm run serve:url-storefront``` for starting the Front-End app
 
-Running the application with docker-compose is possible with:
+Running the applications with docker-compose is possible with:
 
 - ```npm run serve:docker-compose:dev``` for starting both the Back-End as well as Front-End app with development profile of docker-compose. After that open [http://localhost:8001](http://localhost:8001) for interacting with the Storefront.
 
