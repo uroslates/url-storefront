@@ -14,6 +14,7 @@ export class AppComponent {
   title = environment.storeName || 'Demo Store';
   categories: Observable<Category[]>;
   cart$ = this.cardStore.vm$;
+  isShowMenu = false;
 
   constructor(
     private sdkService: StorefrontSdkService,
@@ -23,5 +24,10 @@ export class AppComponent {
     // arguments below (expected that each StorefrontSdkService provides topCatgories endpiont)
     // returning stored Top Categries back (as workaround hardcodded in respectable @url/sdk/xxx services)
     this.categories = this.sdkService.topCategories();
+  }
+
+  toggleMenu(event: MouseEvent, isShowMenu?: boolean) {
+    event.stopPropagation();
+    this.isShowMenu = isShowMenu || !this.isShowMenu;
   }
 }
