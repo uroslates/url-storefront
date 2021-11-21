@@ -113,7 +113,7 @@ nav {
 
 .flex-nav ul {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -126,11 +126,16 @@ nav {
   padding: 1rem;
   background: $white;
   text-align: center;
+  border: 1px solid $lightergray;
+  box-shadow: $boxShadow;
   &.active {
     display: flex;
   }
   li {
     margin: 0.5rem 0;
+    &:hover a {
+      color: $black;
+    }
   }
 }
 

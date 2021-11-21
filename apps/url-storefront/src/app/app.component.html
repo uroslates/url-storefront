@@ -7,16 +7,16 @@
         </p>
       </div>
       <div class="column-xs-4 column-md-6">
-        <a href="#" class="toggle-nav">Menu <i class="ion-navicon-round"></i></a>
-        <ul>
+        <a (click)="toggleMenu($event)" class="toggle-nav">Menu <i class="ion-navicon-round"></i></a>
+        <ul [ngClass]="{'active': isShowMenu}">
           <li *ngFor="let category of categories | async" class="nav-item">
-            <a [routerLink]="[category.permalink]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{category.name}}</a>
+            <a [routerLink]="[category.permalink]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleMenu($event, false)">{{category.name}}</a>
           </li>
           <li class="nav-item">
-            <a href="#">My Account</a>
+            <a href (click)="toggleMenu($event, false)">My Account</a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/cart']" routerLinkActive="'active'">Cart (
+            <a [routerLink]="['/cart']" routerLinkActive="'active'" (click)="toggleMenu($event, false)">Cart (
               <ng-container *ngIf="cart$ | async as cart; else noCartTemplate">
                 {{cart.totalItems}}
               </ng-container>
