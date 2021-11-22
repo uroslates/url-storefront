@@ -2,6 +2,7 @@
   "name": "url",
   "version": "0.0.2",
   "license": "MIT",
+  "homepage": "https://uroslates.github.io/url-storefront",
   "scripts": {
     "ng": "./node_modules/.bin/ng",
     "nx": "./node_modules/.bin/nx",
@@ -16,7 +17,9 @@
     "build": "nx build",
     "test": "nx test",
     "dep-graph": "nx dep-graph",
-    "release": "npx standard-version"
+    "release": "npx standard-version",
+    "gh-pages:build": "nx build url-storefront --prod --base-href https://uroslates.github.io/url-storefront/",
+    "gh-pages:deploy": "./node_modules/.bin/gh-pages -d ./dist/apps/url-storefront"
   },
   "engines": {
     "node": ">=14.15.4"
@@ -81,6 +84,7 @@
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "gh-pages": "^3.2.3",
     "http-server": "^14.0.0",
     "husky": "^7.0.4",
     "jest": "27.2.3",
