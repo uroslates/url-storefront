@@ -19,7 +19,8 @@
     "dep-graph": "nx dep-graph",
     "release": "npx standard-version",
     "gh-pages:build": "nx build url-storefront --prod --base-href https://uroslates.github.io/url-storefront/",
-    "gh-pages:deploy": "./node_modules/.bin/gh-pages -d ./dist/apps/url-storefront"
+    "gh-pages:deploy": "./node_modules/.bin/gh-pages -d ./dist/apps/url-storefront",
+    "security:vulnerabilities:fix": "npm audit fix"
   },
   "engines": {
     "node": ">=14.15.4"
