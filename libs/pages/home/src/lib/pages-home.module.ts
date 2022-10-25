@@ -8,7 +8,7 @@ import { SharedUiCmsModule } from '@url/shared/ui/cms';
 import { PagesProductModule } from '@url/pages/product';
 
 // Comming from @rl/shared/ui/assets 
-export const noImagePlaceholder = '/shared/assets/images/product-placeholder-1.jpeg';
+export const noImagePlaceholder = './shared/assets/images/product-placeholder-1.jpeg';
 
 const COMPONENTS = [
   HomeComponent,

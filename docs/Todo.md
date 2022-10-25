@@ -8,7 +8,7 @@ This page is intended to be used as a temporary placeholder (like a prioritized 
 2. ~~Add Mocked Spree responses - making sure app can be bootstraped with MockedSpreeServiceSdk replacing real calls with shuffeled mocked data respnoses (**enabling apps FE to be deployed on Github Pages W/O BE**).~~
 3. Gallery Images Component - make it work for multiple images (not only 3). **Home page SideBySide section type will be presented noramlly than.**
 4. Enable better Contribution flows:
-   1. Provide [Contribution](./Contribution.md) page with relevant information.
+   1. ~~Provide [Contribution](./Contribution.md) page with relevant information.~~
    2. ~~Add suport for usage of [standard-verion](https://github.com/conventional-changelog/standard-version) -  auto-generation of changelogs, determin sematic version, structured commit history and all the goodies.~~
 5. Add Component store to all the necessary components (pages components).
 6. Cart initialization logic on app load.
@@ -37,4 +37,21 @@ This page is intended to be used as a temporary placeholder (like a prioritized 
        1. Add placeholder images in variants xl, lg, md. xs (use https://i.picsum.photos/id/0/720/320.jpg?hmac=0qnh_S9b1L3gPEdTpdMhE-3Q3M1cKzVw8K_hsuSr_5s to generate and save them in assets/images)
        2. Use the service in app (to show image pro device)
     4. Go through lighthouse report and optimize
-13. ...
+13. TODO: Fix issue with top menu (regression bug)
+14. Product Detail Gallery component
+15. Product Detail only 1 prod image - don't show prod images list!
+16. ...
+
+https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository Make fist issue - configure issue template 
+
+Issue for Mobile hamburger menu dropdowns
+
+Add schematic for proejct enhancement with
+   1. Issues template (GH!) (find issue templates that are ok .githbub/issue_tpls)
+   2. gh pull-request automation flow nodejs?
+   3. semantic versioning, releasing
+   4. conventional commits
+   5. gh-pages deployment
+   6. jamstack and SSR
+   7. Contributors and Contribution pages (templates)
+   
