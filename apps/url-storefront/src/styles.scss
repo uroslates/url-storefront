@@ -126,8 +126,8 @@ nav {
   padding: 1rem;
   background: $white;
   text-align: center;
-  border: 1px solid $lightergray;
-  box-shadow: $boxShadow;
+  // border: 1px solid $lightergray;
+  // box-shadow: $boxShadow;
   &.active {
     display: flex;
   }

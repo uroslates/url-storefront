@@ -4,9 +4,12 @@ import {
   Request,
   UseInterceptors,
   CacheInterceptor,
-  Logger
+  Logger,
+  Query,
+  CacheTTL
 } from '@nestjs/common';
 import { AppService } from './app.service';
+import { UrlScraperService } from './url-scraper.service';
 
 @Controller()
 @UseInterceptors(CacheInterceptor)
@@ -37,6 +40,14 @@ export class AppController {
     const url = `${this.appService.spreeApiBaseUrl}${req.originalUrl}`;
     this.logger.log(url, 'Proxying request to configured Spree BackEnd');
     return this.appService.spreeApiProxyQuery(url);
+  }
+
+  @Get('/url/scraper')
+  // 1h cache
+  @CacheTTL(3600)
+  async scrapePage(@Query('url') url) {
+    this.logger.log(url, 'Scrape:Request:Detected');
+    return UrlScraperService.scrapePage(url);
   }
 
 }
