@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 # Copy package.json, yarn.lock files and download deps
 COPY package.json yarn.lock ./
+# CI/CD avoid network timeout issues on CI
+RUN yarn config set network-timeout 600000 -g
 RUN yarn global add @angular/cli
 RUN yarn global add @nxpm/cli@latest
 
