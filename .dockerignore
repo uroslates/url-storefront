@@ -8,3 +8,5 @@ yarn-error.log
 .git
 .gitignore
 .prettier*
+node_modules/
+dist/
