@@ -14,6 +14,8 @@ RUN yarn global add @nxpm/cli@latest
 # Copy sources to the working directory
 COPY . .
 
+RUN yarn
+
 # Set the Node environment
 ARG node_env=development
 ENV NODE_ENV $node_env
