@@ -1,5 +1,5 @@
 # Start from node base image
-FROM node:14.18-alpine
+FROM node:16.20.0-alpine
 
 # Set the current working directory inside the container
 WORKDIR /usr/src/app
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 # CI/CD avoid network timeout issues on CI
 RUN yarn config set network-timeout 600000 -g
-RUN yarn global add @angular/cli
+# RUN yarn global add @angular/cli
 RUN yarn global add @nxpm/cli@latest
 
 # Copy sources to the working directory
